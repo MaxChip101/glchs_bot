@@ -42,8 +42,16 @@ func newMessage(discord *discordgo.Session, message *discordgo.MessageCreate) {
 		return
 	}
 
+	
+
 	switch {
-	case strings.Contains(message.Content, "/whois"):
-		discord.ChannelMessageSend(message.ChannelID, "skibidi")
+	case strings.HasPrefix(message.Content, "/whois"):
+		args := strings.Split(message.Content, " ")
+		if len(args) == 1 {
+			discord.ChannelMessageSend(message.ChannelID, "Please refer to a user")
+			return
+		}
+		fmt.Println(args[1])
+		discord.ChannelMessageSend(message.ChannelID, args[1])
 	}
 }

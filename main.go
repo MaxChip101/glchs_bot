@@ -4,7 +4,6 @@ import (
 	"glchs_bot/bot"
 	"log"
 	"os"
-	"fmt"
 )
 
 func main()  {
